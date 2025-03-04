@@ -34,6 +34,7 @@ watch(() => props.showElement, () => {
 const setDimondCircles = () => {
   if (!dimondCircles.value || dimondCircle.value.length !== 4) return
   dimondCircle.value.forEach((circle, index) => {
+    circle.style.opacity = '1'
     switch (index) {
       case 0:
         circle.style.top = '0px'
@@ -62,6 +63,7 @@ const setDimondCircles = () => {
 const setSquareCircles = () => {
   if (!squareCircles.value || squareCircle.value.length !== 4) return
   squareCircle.value.forEach((circle, index) => {
+    circle.style.opacity = '1'
     switch (index) {
       case 0:
         circle.style.top = '0'
@@ -103,6 +105,7 @@ const setSquareCircles = () => {
   width: 100%;
   height: 100%;
   &__circle {
+    opacity: 0;
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -131,6 +134,7 @@ const setSquareCircles = () => {
   width: 100%;
   height: 100%;
   &__circle {
+    opacity: 0;
     width: 250px;
     height: 250px;
     border-radius: 50%;
