@@ -1,4 +1,3 @@
-<!--
 <template>
   <div class="first_step">
     <div class="first_step__wrapper">
@@ -8,105 +7,32 @@
       <div ref="dimondCircles" class="first_step__dimond">
         <SquareCircles :show-element="showElement" type="dimond" />
       </div>
-
-      <div :style="progressStyle">
-        <svg class="progress-circle" viewBox="0 0 100 100">
-          <circle
-            class="progress"
-            cx="50"
-            cy="50"
-            r="50"
-            stroke-width="0.5"
-            :style="{ strokeDashoffset }"
-            :class="{ 'is-complete': progress.value === 100 }"
-          ></circle>
-        </svg>
+      <div v-if="showElement" class="first_step__center-circle">
+        <span>click to enter</span>
       </div>
-    </div>
-  </div>
-</template> -->
-<template>
-  <div class="first_step">
-    <div class="first_step__wrapper">
-      <div ref="squareCircles" class="first_step__square">
-        <SquareCircles :show-element="showElement" type="square" />
-      </div>
-      <div ref="dimondCircles" class="first_step__dimond">
-        <SquareCircles :show-element="showElement" type="dimond" />
-      </div>
-
-      <!-- Animated transition wrapper -->
-      <div :style="progressStyle">
-        <svg class="progress-circle" viewBox="0 0 100 100">
-          <circle
-            class="progress"
-            cx="50"
-            cy="50"
-            r="50"
-            stroke-width="0.5"
-            :style="{ strokeDashoffset }"
-          ></circle>
-        </svg>
-
-        <!-- Text in the center of the circle -->
-        <div v-if="progress === 100" class="center-text">
-          <span>click to enter</span>
-        </div>
+      <div v-else class="first_step__loader">
+        <div class="loader"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import SquareCircles from '@/components/FirstStep/SquareCircles.vue'
 
 const showElement = ref(false)
-const progress = ref(0) // Start at 0%
-
-const circumference = 2 * Math.PI * 45 // Circle path calculation
-const strokeDashoffset = computed(() => {
-  return circumference - (circumference * progress.value) / 100
-})
-
-// Animate progress
-const animateProgress = (duration) => {
-  const startTime = performance.now()
-
-  const step = (currentTime) => {
-    const elapsedTime = currentTime - startTime
-    const progressValue = Math.min((elapsedTime / duration) * 100, 100)
-
-    progress.value = progressValue
-
-    if (progressValue < 100) {
-      requestAnimationFrame(step)
-    } else {
-      // When progress reaches 100%, complete the circle
-      setTimeout(() => {
-        showElement.value = true // Show text after animation ends
-      }, 500) // Small delay for smooth transition
-    }
-  }
-
-  requestAnimationFrame(step)
-}
 
 onMounted(() => {
-  animateProgress(3000) // 3 seconds animation
+  setTimeout(() => {
+    showElement.value = true
+  }, 3500)
 })
-
-// Style to animate center circle growth
-const progressStyle = computed(() => ({
-  width: '100vw',
-  height: '100vh',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}))
 </script>
 
 <style lang="scss" scoped>
+
+
 .first_step {
   width: 100%;
   height: 100vh;
@@ -115,52 +41,114 @@ const progressStyle = computed(() => ({
   align-items: center;
   position: relative;
   overflow: hidden;
+  &__center-circle {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 1px solid #ffffff65;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @media screen and (max-width: 768px) {
+      width: 250px;
+      height: 250px;
+      &:hover {
+        width: 240px;
+        height: 240px;
+      }
+    }
+    @media screen and (max-width: 520px) {
+      width: 150px;
+      height: 150px;
+      &:hover {
+        width: 140px;
+        height: 140px;
+      }
+    }
+    span {
+      color: #ffffff65;
+      font-size: 16px;
+      font-weight: 600;
+      @media screen and (max-width: 768px) {
+        font-size: 12px;
+      }
+      @media screen and (max-width: 520px) {
+        font-size: 10px;
+      }
+    }
+    &:hover {
+      box-shadow:
+        inset 1px 1px 8px 0px #898787,
+        1px 1px 20px 0px #898787;
+        width: 340px;
+        height: 340px;
+    }
+  }
+  &__loader {
+    width: 350px;
+    height: 350px;
+    .loader,.loader:before,.loader:after{
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    content:"";
+    position:absolute;
+    border-radius:50%;
+  }
+
+  .loader{
+    width:350px;
+    height:350px;
+    animation:spin 1s linear infinite;
+  }
+
+  @keyframes spin{
+    100%{transform:rotate(360deg);}
+  }
+
+  .loader:before{
+    border:1px solid #183969;
+    border-bottom:1px solid #fff;
+    border-left:1px solid #fff;
+    animation:spin1 12s linear infinite;
+  }
+
+  .loader:after{
+    border:1px solid #183969;
+    border-top:1px solid transparent;
+    border-right:1px solid transparent;
+    animation:spin2 12s linear infinite;
+  }
+
+  @keyframes spin1{
+    20%{transform:rotate(150deg)}
+    40%{transform:rotate(300deg)}
+    80%{transform:rotate(300deg)}
+    100%{transform:rotate(360deg)}
+  }
+
+  @keyframes spin2{
+    0%{transform:rotate(-30deg)}
+    20%{transform:rotate(-30deg);
+        border-color:transparent transparent #183969 #183969}
+    21%{border-color:#fff #fff transparent transparent}
+    40%{transform:rotate(-30deg)}
+    60%{transform:rotate(120deg);
+        border-color:#fff #fff transparent transparent}
+    61%{border-color:transparent transparent #183969 #183969}
+    80%{transform:rotate(270deg)}
+    100%{transform:rotate(360deg);border-color:#fff #fff transparent transparent}
+  }
+  }
 }
 
-/* Circular Progress Styles */
-.progress-circle {
-  width: 350px;
-  height: 350px;
-  transition: all 0.1s ease-in-out;
-}
-
-circle {
-  fill: none;
-  stroke-width: 1;
-  stroke-linecap: round;
-  transform: rotate(-90deg);
-  transform-origin: center;
-}
-
-.progress {
-  stroke-width: 0.4; /* Makes it thinner */
-  stroke: #fff;
-  stroke-dasharray: 314; /* Full circumference of the circle (2 * PI * 50) */
-  stroke-dashoffset: 314; /* Start at full offset */
-  transition: stroke-dashoffset 0.1s ease-out;
-}
-
-/* When the circle is complete, add a fill */
-.progress.is-complete {
-  stroke: #4caf50; /* Green when complete */
-  fill: #4caf50; /* Fill circle with green */
-  stroke-dashoffset: 0; /* Complete the stroke */
-}
-
-/* Text in the center when progress is 100% */
-.center-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Keep your other elements untouched */
 .first_step__wrapper {
   position: absolute;
   top: 50%;
