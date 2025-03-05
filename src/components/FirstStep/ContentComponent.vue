@@ -30,33 +30,45 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .loader {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      position: relative;
-      animation: rotate 1s linear infinite
-    }
-    .loader::before {
-      content: "";
-      box-sizing: border-box;
-      position: absolute;
-      inset: 0px;
-      border-radius: 50%;
-      border: 1px solid #FFF;
-      animation: prixClipFix 2.5s linear normal ;
-    }
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  animation: prixClipFix 2.5s linear normal;
+}
 
-    @keyframes rotate {
-      100%   {transform: rotate(360deg)}
-    }
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-    @keyframes prixClipFix {
-        0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-        25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-        50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-        75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-        100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
-    }
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
 .first_step {
   width: 100%;
   height: 100vh;
@@ -110,8 +122,8 @@ onMounted(() => {
       box-shadow:
         inset 1px 1px 8px 0px #898787,
         1px 1px 20px 0px #898787;
-      width: 340px;
-      height: 340px;
+      width: 280px;
+      height: 280px;
     }
   }
 }
