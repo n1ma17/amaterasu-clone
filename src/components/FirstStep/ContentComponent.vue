@@ -10,9 +10,7 @@
       <div v-if="showElement" class="first_step__center-circle">
         <span>click to enter</span>
       </div>
-      <div v-else class="first_step__loader">
-        <div class="loader"></div>
-      </div>
+      <div v-else class="loader"></div>
     </div>
   </div>
 </template>
@@ -26,13 +24,39 @@ const showElement = ref(false)
 onMounted(() => {
   setTimeout(() => {
     showElement.value = true
-  }, 3500)
+  }, 2500)
 })
 </script>
 
 <style lang="scss" scoped>
+.loader {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .loader::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset: 0px;
+      border-radius: 50%;
+      border: 1px solid #FFF;
+      animation: prixClipFix 2.5s linear normal ;
+    }
 
+    @keyframes rotate {
+      100%   {transform: rotate(360deg)}
+    }
 
+    @keyframes prixClipFix {
+        0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+        25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+        50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+        75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+        100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+    }
 .first_step {
   width: 100%;
   height: 100vh;
@@ -42,10 +66,10 @@ onMounted(() => {
   position: relative;
   overflow: hidden;
   &__center-circle {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    border: 1px solid #ffffff65;
+    border: 1px solid #fff;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -72,7 +96,7 @@ onMounted(() => {
       }
     }
     span {
-      color: #ffffff65;
+      color: #fff;
       font-size: 16px;
       font-weight: 600;
       @media screen and (max-width: 768px) {
@@ -86,66 +110,9 @@ onMounted(() => {
       box-shadow:
         inset 1px 1px 8px 0px #898787,
         1px 1px 20px 0px #898787;
-        width: 340px;
-        height: 340px;
+      width: 340px;
+      height: 340px;
     }
-  }
-  &__loader {
-    width: 350px;
-    height: 350px;
-    .loader,.loader:before,.loader:after{
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    content:"";
-    position:absolute;
-    border-radius:50%;
-  }
-
-  .loader{
-    width:350px;
-    height:350px;
-    animation:spin 1s linear infinite;
-  }
-
-  @keyframes spin{
-    100%{transform:rotate(360deg);}
-  }
-
-  .loader:before{
-    border:1px solid #183969;
-    border-bottom:1px solid #fff;
-    border-left:1px solid #fff;
-    animation:spin1 12s linear infinite;
-  }
-
-  .loader:after{
-    border:1px solid #183969;
-    border-top:1px solid transparent;
-    border-right:1px solid transparent;
-    animation:spin2 12s linear infinite;
-  }
-
-  @keyframes spin1{
-    20%{transform:rotate(150deg)}
-    40%{transform:rotate(300deg)}
-    80%{transform:rotate(300deg)}
-    100%{transform:rotate(360deg)}
-  }
-
-  @keyframes spin2{
-    0%{transform:rotate(-30deg)}
-    20%{transform:rotate(-30deg);
-        border-color:transparent transparent #183969 #183969}
-    21%{border-color:#fff #fff transparent transparent}
-    40%{transform:rotate(-30deg)}
-    60%{transform:rotate(120deg);
-        border-color:#fff #fff transparent transparent}
-    61%{border-color:transparent transparent #183969 #183969}
-    80%{transform:rotate(270deg)}
-    100%{transform:rotate(360deg);border-color:#fff #fff transparent transparent}
-  }
   }
 }
 
