@@ -19,6 +19,9 @@ import SeccondStep from '@/components/SeccondStep/MainContent.vue';
   width: 100vw;
   height: 100vh;
   // background-color: #183969;
-
+&__first-step {
+  width: 100%;
+  height: 100%;
+}
 }
 </style>

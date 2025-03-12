@@ -1,93 +1,157 @@
 <template>
   <div ref="container" class="container">
     <section ref="section1" class="section1" data-bgcolor="#bcb8ad" data-textcolor="#032f35">
-      <h1>Change background color with GSAP ScrollTrigger</h1>
-      <img
-        src="https://images.pexels.com/photos/3062948/pexels-photo-3062948.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-        alt=""
-      />
-      <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+      <!-- <img ref="logoRef" class="logo" src="@/assets/logo.svg" alt="Logo" /> -->
+       <div ref="logoRef" class="logo"></div>
     </section>
-    <section ref="section2" class="section2" data-bgcolor="#eacbd1" data-textcolor="#536fae">
-      <h1>Change background color with GSAP ScrollTrigger</h1>
-      <img
-        src="https://images.pexels.com/photos/4467879/pexels-photo-4467879.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-        alt=""
-      />
-      <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+    <section ref="section2" class="section2">
+      <div class="border">
+        <svg
+          viewBox="0 0 96 612"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="divider-svg"
+          data-v-d2ba1143=""
+        >
+          <path
+            d="M1.00005 4.13072e-06L1.00004 211.531C1.00004 246.385 18.8257 278.818 48.25 297.5V297.5C77.6743 316.182 95.5 348.615 95.5 383.469L95.5 611.5"
+            stroke="currentcolor"
+          ></path>
+        </svg>
+      </div>
+      <div class="section2__descriptions">
+        <h1 ref="sec2Title">MEET ALEPH</h1>
+        <h2 ref="sec2Text">
+          There are many variations of passages of Lorem Ipsum available, but the majority have
+          suffered alteration in some form, by injected humour, or randomised words which don't look
+          even slightly believable.
+        </h2>
+      </div>
     </section>
-
-    <section ref="section3" class="section3" data-bgcolor="#536fae" data-textcolor="#eacbd1">
-      <h1>Change background color with GSAP ScrollTrigger</h1>
-      <img
-        src="https://images.pexels.com/photos/5604966/pexels-photo-5604966.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-        alt=""
-      />
-      <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+    <section ref="section" class="section" data-bgcolor="#eacbd1" data-textcolor="#536fae">
+      <h1 ref="secTitle">MEET ALEPH</h1>
+      <h2 ref="secText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
     </section>
-    <section ref="section4" class="section4" data-bgcolor="#e3857a" data-textcolor="#f1dba7">
-      <h1>Change background color with GSAP ScrollTrigger</h1>
-      <img
-        src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-        alt=""
-      />
-      <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+    <section ref="section" class="section" data-bgcolor="#eacbd1" data-textcolor="#536fae">
+      <h1 ref="secTitle">MEET ALEPH</h1>
+      <h2 ref="secText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
     </section>
+    <section ref="section" class="section" data-bgcolor="#eacbd1" data-textcolor="#536fae">
+      <h1 ref="secTitle">MEET ALEPH</h1>
+      <h2 ref="secText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+    </section>
+    <div ref="backgroundRef" class="background"></div>
   </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import * as THREE from 'three'
 
+const logoRef = ref(null)
+const backgroundRef = ref(null)
+let vantaEffect = null
 gsap.registerPlugin(ScrollTrigger)
 
-onMounted(() => {
-  const sections = document.querySelectorAll('section')
+onMounted(async () => {
+  const VANTA = (await import('vanta/src/vanta.fog')).default
 
-  sections.forEach((section, index) => {
+  vantaEffect = VANTA({
+    el: backgroundRef.value,
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.0,
+    minWidth: 200.0,
+    highlightColor: 0xd0f4f9,
+    midtoneColor: 0xd0f4f9,
+    lowlightColor: 0xb4fcfb,
+    baseColor: 0xffffff,
+    blurFactor: 0.9,
+    speed: 1.9,
+    zoom: 0.3,
+    THREE: THREE,
+  })
+  window.addEventListener('resize', () => {
+    if (vantaEffect) {
+      vantaEffect.resize()
+    }
+  })
+  const section1 = document.querySelectorAll('.section1')
+  section1.forEach((section, index) => {
     gsap.fromTo(
       section,
-      { opacity: 0, y: 10 },
+      { opacity: 0, y: 0 },
       {
         opacity: 1,
-        y: 0,
-        duration: 2.5,
-        delay: index * 0.5,
+        y: 10,
+        duration: 9,
+        delay: index,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: section,
-          start: 'top 60%',
+          start: 'top 100%',
           end: 'top 20%',
           scrub: true, // ✅ وابسته به اسکرول
           toggleActions: 'restart pause resume reverse', // ✅ انیمیشن موقع اسکرول به بالا و پایین اجرا بشه
         },
       },
     )
-
-    const elements = section.querySelectorAll('h1, img')
-
-    elements.forEach((el, index) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 300 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          delay: index * 0.3,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            scrub: true, // ✅ حالا موقع اسکرول بالا و پایین کار می‌کنه
-            toggleActions: 'restart pause resume reverse',
-          },
+  })
+  const section2 = document.querySelectorAll('.section2')
+  section2.forEach((el, index) => {
+    gsap.fromTo(
+      el,
+      { opacity: 1, y: 0 },
+      {
+        opacity: 1,
+        y: -200,
+        duration: 1,
+        delay: index,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          scrub: true, // ✅ حالا موقع اسکرول بالا و پایین کار می‌کنه
+          toggleActions: 'restart pause resume reverse',
         },
-      )
+      },
+    )
+  })
+
+  logoRef.value.addEventListener('mousemove', (event) => {
+    const { width, height, left, top } = logoRef.value.getBoundingClientRect()
+    const x = (event.clientX - left) / width - 0.5
+    const y = (event.clientY - top) / height - 0.5
+
+    const rotateX = y * 40
+    const rotateY = -x * 40
+    const depth = -300
+
+    gsap.to(logoRef.value, {
+      rotateX,
+      rotateY,
+      z: depth,
+      duration: 0.9,
+      delay: 1,
+      ease: 'power2.out',
     })
   })
+
+  logoRef.value.addEventListener('mouseleave', () => {
+    gsap.to(logoRef.value, {
+      rotateX: 0,
+      rotateY: 0,
+      z: 0,
+      duration: 0.3,
+      ease: 'power2.out',
+    })
+  })
+})
+onBeforeUnmount(() => {
+  if (vantaEffect) vantaEffect.destroy()
 })
 </script>
 
@@ -96,56 +160,85 @@ body {
   font-family: termina, sans-serif;
   transition: 0.3s ease-out;
 }
-
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* عرض کل صفحه */
+  height: 100vh; /* ارتفاع کل صفحه */
+  z-index: -10;
+  overflow: hidden;
+}
 .container {
   width: 100%;
   height: 100vh;
 }
-
-section {
-  min-height: 100vh;
+.section {
+  min-height: 400px;
+  width: 100%;
+  margin-top: 200px;
+}
+.section1 {
+  height: calc(100vh - 50px);
   width: 100%;
   position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 2rem;
-  padding: 50px 10vw;
-  max-width: 1000px;
-  margin: auto;
   place-items: center;
 }
-
-img {
-  max-height: 80vh;
-  width: 100%;
-  object-fit: contain;
+.logo {
+  background: linear-gradient(45deg, #fff 0, #b6ecf3 100%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  mask-image: url(../../assets/logo.svg);
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+  width:70%;
+  height: 70%;
 }
-
-h1 {
+.border {
+  width: 50%;
+  height: 700px;
   display: flex;
-  font-size: 4rem;
-  z-index: 2;
-  line-height: 1.2;
-  font-weight: 700;
+  justify-content: flex-end;
 }
-h2 {
-  font-size: 2rem;
-  max-width: 400px;
+.divider-svg {
+  color: #000;
+  opacity: 0.2;
+  mask-image: linear-gradient(180deg, #000 0, #000 55%, #000000 100%);
+  width: 90px;
+  height: 100%;
 }
-.section1 {
-  background-color: #fff;
-  color: #536fae;
-}
+
 .section2 {
-  background-color: #BFEEF5;
-  color: #e3857a;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+
+  &__descriptions {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    & > h1 {
+      color: #1f56ee;
+      font-size: 16px;
+      height: 50px;
+      font-weight: 600;
+      list-style: circle;
+    }
+    & > h2 {
+      color: #1f56ee;
+      font-size: 24px;
+      font-weight: 500;
+      padding: 32px;
+    }
+  }
 }
-.section3 {
-  background-color: #BFEEF5;
-  color: #f1dba7;
-}
-.section4 {
-  background-color: #BFEEF5;
-  color: #eacbd1;
-}
+
 </style>
