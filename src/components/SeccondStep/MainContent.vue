@@ -29,7 +29,7 @@
         </h2>
       </div>
     </section>
-    <section ref="section" class="section3" data-bgcolor="#eacbd1" data-textcolor="#536fae">
+    <section ref="section3" class="section3" data-bgcolor="#eacbd1" data-textcolor="#536fae">
       <div ref="sec3Title" class="section3__header">
         <span>Your Mind,</span>
         <span>Mapped</span>
@@ -138,8 +138,8 @@ onMounted(async () => {
     )
   })
   gsap.fromTo(
-    '.section3',
-    { opacity: 0.3, y: -50, filter: 'blur(5px)' },
+    '.section3__header',
+    { opacity: 0.3, y: -50, filter: 'blur(10px)' },
     {
       opacity: 1,
       y: -100,
@@ -327,9 +327,8 @@ body {
   width: 100%;
   height: 300px;
   color: #26337f;
-  gap: 12px;
-  transform: translate3d(0px, -559.091px, 0px);
   &__header {
+    transform: translate3d(0px, -259.091px, 0px);
     display: flex;
     flex-direction: column;
     align-items: center;
