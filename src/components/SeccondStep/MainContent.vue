@@ -42,13 +42,82 @@
     </section>
     <section ref="section4" class="section4" data-bgcolor="#eacbd1" data-textcolor="#536fae">
       <div ref="oval3" class="oval-front">
+        <div class="wave-divider">
+          <svg
+            id="wave"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 456.7 39.9"
+            style="enable-background: new 0 0 456.7 39.9"
+            xml:space="preserve"
+          >
+            <path
+              class="st69"
+              d="M4.2,33.2c0.1-0.1,7-6.9,15.9-13.8C27.7,13.7,38.7,6,47.5,6c7.5,0,14,6.6,20.3,12.9l0.4,0.4
+	c6.8,6.9,14.6,14.6,24.6,14.6c9.9,0,17.7-7.8,24.5-14.6l0.5-0.5C124,12.5,130.5,6,137.9,6c7.5,0,13.9,6.5,20.2,12.9l0.4,0.4
+	c6.8,6.9,14.6,14.6,24.5,14.6c10,0,17.8-7.8,24.6-14.6l0.5-0.5C214.4,12.5,220.9,6,228.4,6c7.5,0,14,6.5,20.2,12.9l0.4,0.4
+	c6.8,6.9,14.5,14.6,24.5,14.6c9.9,0,17.7-7.8,24.5-14.6l0.3-0.3c6.3-6.4,12.9-13,20.5-13c7.5,0,14.1,6.6,20.4,13l0.3,0.3
+    c6.8,6.9,14.6,14.6,24.5,14.6c9.9,0,17.6-7.8,24.5-14.6l0.2-0.2C395.1,12.6,401.6,6,409.2,6c8.7,0,19.8,7.7,27.3,13.4
+	c8.9,6.8,15.9,13.7,16,13.8"
+            />
+          </svg>
+        </div>
         How do you balance your personal ambitions with maintaining relationships?
       </div>
       <div class="background-ovals">
         <div ref="oval1" class="oval1 oval-bg">
+                  <div class="wave-divider">
+          <svg
+            id="wave"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 456.7 39.9"
+            style="enable-background: new 0 0 456.7 39.9"
+            xml:space="preserve"
+          >
+            <path
+              class="st69"
+              d="M4.2,33.2c0.1-0.1,7-6.9,15.9-13.8C27.7,13.7,38.7,6,47.5,6c7.5,0,14,6.6,20.3,12.9l0.4,0.4
+	c6.8,6.9,14.6,14.6,24.6,14.6c9.9,0,17.7-7.8,24.5-14.6l0.5-0.5C124,12.5,130.5,6,137.9,6c7.5,0,13.9,6.5,20.2,12.9l0.4,0.4
+	c6.8,6.9,14.6,14.6,24.5,14.6c10,0,17.8-7.8,24.6-14.6l0.5-0.5C214.4,12.5,220.9,6,228.4,6c7.5,0,14,6.5,20.2,12.9l0.4,0.4
+	c6.8,6.9,14.5,14.6,24.5,14.6c9.9,0,17.7-7.8,24.5-14.6l0.3-0.3c6.3-6.4,12.9-13,20.5-13c7.5,0,14.1,6.6,20.4,13l0.3,0.3
+    c6.8,6.9,14.6,14.6,24.5,14.6c9.9,0,17.6-7.8,24.5-14.6l0.2-0.2C395.1,12.6,401.6,6,409.2,6c8.7,0,19.8,7.7,27.3,13.4
+	c8.9,6.8,15.9,13.7,16,13.8"
+            />
+          </svg>
+        </div>
           How do you balance your personal ambitions with maintaining relationships?
         </div>
         <div ref="oval2" class="oval2 oval-bg">
+                  <div class="wave-divider">
+          <svg
+            id="wave"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 456.7 39.9"
+            style="enable-background: new 0 0 456.7 39.9"
+            xml:space="preserve"
+          >
+            <path
+              class="st69"
+              d="M4.2,33.2c0.1-0.1,7-6.9,15.9-13.8C27.7,13.7,38.7,6,47.5,6c7.5,0,14,6.6,20.3,12.9l0.4,0.4
+	c6.8,6.9,14.6,14.6,24.6,14.6c9.9,0,17.7-7.8,24.5-14.6l0.5-0.5C124,12.5,130.5,6,137.9,6c7.5,0,13.9,6.5,20.2,12.9l0.4,0.4
+	c6.8,6.9,14.6,14.6,24.5,14.6c10,0,17.8-7.8,24.6-14.6l0.5-0.5C214.4,12.5,220.9,6,228.4,6c7.5,0,14,6.5,20.2,12.9l0.4,0.4
+	c6.8,6.9,14.5,14.6,24.5,14.6c9.9,0,17.7-7.8,24.5-14.6l0.3-0.3c6.3-6.4,12.9-13,20.5-13c7.5,0,14.1,6.6,20.4,13l0.3,0.3
+    c6.8,6.9,14.6,14.6,24.5,14.6c9.9,0,17.6-7.8,24.5-14.6l0.2-0.2C395.1,12.6,401.6,6,409.2,6c8.7,0,19.8,7.7,27.3,13.4
+	c8.9,6.8,15.9,13.7,16,13.8"
+            />
+          </svg>
+        </div>
           How do you balance your personal ambitions with maintaining relationships?
         </div>
       </div>
@@ -163,14 +232,14 @@ onMounted(async () => {
 
     ovals.forEach((oval, index) => {
       const intensity = index === 2 ? 1.5 : 1 // بیضی جلوتر سریع‌تر حرکت کنه
-      const moveX = (x - centerX) / 30 * intensity
-      const moveY = (y - centerY) / 30 * intensity
+      const moveX = ((x - centerX) / 30) * intensity
+      const moveY = ((y - centerY) / 30) * intensity
       gsap.to(oval, {
         x: moveX,
         y: moveY,
 
         duration: 0.4,
-        ease: 'power2.out'
+        ease: 'power2.out',
       })
     })
   })
@@ -180,15 +249,15 @@ onMounted(async () => {
     const centerY = window.innerHeight / 2
 
     const intensity = 1
-    const moveX = -(x - centerX) / 100 * intensity
-    const moveY = -(y - centerY) / 100 * intensity
+    const moveX = (-(x - centerX) / 100) * intensity
+    const moveY = (-(y - centerY) / 100) * intensity
     gsap.to(oval3.value, {
-        x: moveX,
-        y: moveY,
+      x: moveX,
+      y: moveY,
 
-        duration: 0.4,
-        ease: 'power2.out'
-      })
+      duration: 0.4,
+      ease: 'power2.out',
+    })
   })
 
   logoRef.value.addEventListener('mousemove', (event) => {
@@ -368,7 +437,6 @@ body {
   left: 0;
   margin: auto;
   filter: blur(3px);
-
 }
 .oval2 {
   position: absolute;
@@ -381,7 +449,8 @@ body {
   transition: transform 0.2s ease-out;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  gap: 24px;
   padding: 16px;
 }
 .oval1 {
@@ -395,7 +464,8 @@ body {
   transition: transform 0.2s ease-out;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  gap: 24px;
   padding: 16px;
 }
 
@@ -416,8 +486,32 @@ body {
   height: 150px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  gap: 24px;
   padding: 16px;
 }
 
+@keyframes wave {
+  0% {
+    left: -80px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+.wave-divider {
+  width: 100px;
+  overflow: hidden;
+}
+.wave-divider svg {
+  position: relative;
+  left: -50px;
+  width: 200px;
+  animation: wave 2s linear infinite;
+  fill: none;
+  stroke: #96f0fc;
+  stroke-width: 10;
+  stroke-miterlimit: 10;
+}
 </style>
