@@ -1,13 +1,12 @@
 <template>
   <div ref="container" class="container">
     <section ref="section1" class="section1" data-bgcolor="#bcb8ad" data-textcolor="#032f35">
-      <!-- <img ref="logoRef" class="logo" src="@/assets/logo.svg" alt="Logo" /> -->
-       <div ref="logoRef" class="logo"></div>
+      <div ref="logoRef" class="logo"></div>
     </section>
     <section ref="section2" class="section2">
       <div class="border">
         <svg
-          viewBox="0 0 96 612"
+          viewBox="0 0 96 850"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           class="divider-svg"
@@ -20,7 +19,9 @@
         </svg>
       </div>
       <div class="section2__descriptions">
-        <h1 ref="sec2Title">MEET ALEPH</h1>
+        <ul>
+          <li ref="sec2Title">MEET ALEPH</li>
+        </ul>
         <h2 ref="sec2Text">
           There are many variations of passages of Lorem Ipsum available, but the majority have
           suffered alteration in some form, by injected humour, or randomised words which don't look
@@ -28,9 +29,16 @@
         </h2>
       </div>
     </section>
-    <section ref="section" class="section" data-bgcolor="#eacbd1" data-textcolor="#536fae">
-      <h1 ref="secTitle">MEET ALEPH</h1>
-      <h2 ref="secText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+    <section ref="section" class="section3" data-bgcolor="#eacbd1" data-textcolor="#536fae">
+      <div ref="sec3Title" class="section3__header">
+        <span>Your Mind,</span>
+        <span>Mapped</span>
+      </div>
+      <h2 ref="secText">
+        We tirelessly work with our team of psychologists and neuroscientists to model a multi-modal
+        intake mechanisms to understand the true you across varying degrees of abstraction, through
+        exposure to art, music, games, and introspective questions.
+      </h2>
     </section>
     <section ref="section" class="section" data-bgcolor="#eacbd1" data-textcolor="#536fae">
       <h1 ref="secTitle">MEET ALEPH</h1>
@@ -128,14 +136,14 @@ onMounted(async () => {
 
     const rotateX = y * 40
     const rotateY = -x * 40
-    const depth = -300
+    const depth = -250
 
     gsap.to(logoRef.value, {
       rotateX,
       rotateY,
       z: depth,
       duration: 0.9,
-      delay: 1,
+      delay: 1.5,
       ease: 'power2.out',
     })
   })
@@ -197,7 +205,7 @@ body {
   mask-repeat: no-repeat;
   mask-size: contain;
   mask-position: center;
-  width:70%;
+  width: 70%;
   height: 70%;
 }
 .border {
@@ -208,7 +216,7 @@ body {
 }
 .divider-svg {
   color: #000;
-  opacity: 0.2;
+  opacity: 0.3;
   mask-image: linear-gradient(180deg, #000 0, #000 55%, #000000 100%);
   width: 90px;
   height: 100%;
@@ -220,25 +228,58 @@ body {
   display: flex;
 
   &__descriptions {
-    width: 50%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    & > h1 {
-      color: #1f56ee;
-      font-size: 16px;
-      height: 50px;
-      font-weight: 600;
-      list-style: circle;
+    & > ul {
+      padding: 0;
+      > li {
+        color: #26337f;
+        font-size: 12px;
+        height: 50px;
+        font-weight: 600;
+        padding: 0;
+        list-style-type: disc;
+        &::marker {
+          color: #96f0fc;
+          font-size: 20px;
+        }
+      }
     }
     & > h2 {
-      color: #1f56ee;
-      font-size: 24px;
+      color: #26337f;
+      font-size: 20px;
       font-weight: 500;
-      padding: 32px;
+      text-align: justify;
     }
   }
 }
-
+.section3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #26337f;
+  gap: 12px;
+  transform: translate3d(0px, -159.091px, 0px);
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    > span {
+      font-size: 38px;
+      font-weight: 400;
+      padding: 0;
+    }
+  }
+  & > h2 {
+    width: 40%;
+    text-align: center;
+    font-size: 16px;
+  }
+}
 </style>
