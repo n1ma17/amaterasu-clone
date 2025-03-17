@@ -6,7 +6,7 @@
     <section ref="section2" class="section2">
       <div class="border">
         <svg
-          viewBox="0 0 96 850"
+          viewBox="0 0 100 450"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           class="divider-svg"
@@ -40,13 +40,9 @@
         exposure to art, music, games, and introspective questions.
       </h2>
     </section>
-    <section ref="section" class="section" data-bgcolor="#eacbd1" data-textcolor="#536fae">
-      <h1 ref="secTitle">MEET ALEPH</h1>
-      <h2 ref="secText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-    </section>
-    <section ref="section" class="section" data-bgcolor="#eacbd1" data-textcolor="#536fae">
-      <h1 ref="secTitle">MEET ALEPH</h1>
-      <h2 ref="secText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+    <section ref="section4" class="section4" data-bgcolor="#eacbd1" data-textcolor="#536fae">
+      <h1 ref="sec4Title">MEET ALEPH</h1>
+      <h2 ref="sec4Text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
     </section>
     <div ref="backgroundRef" class="background"></div>
   </div>
@@ -128,6 +124,24 @@ onMounted(async () => {
       },
     )
   })
+  gsap.fromTo(
+    '.section3',
+    { opacity: 0.3, y: -50, filter: 'blur(5px)' },
+    {
+      opacity: 1,
+      y: -100,
+      filter: 'blur(0px)',
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.section3',
+        start: 'top 100%',
+        end: 'top 20%',
+        scrub: true,
+        toggleActions: 'restart pause resume reverse',
+      },
+    }
+  )
 
   logoRef.value.addEventListener('mousemove', (event) => {
     const { width, height, left, top } = logoRef.value.getBoundingClientRect()
@@ -205,12 +219,12 @@ body {
   mask-repeat: no-repeat;
   mask-size: contain;
   mask-position: center;
-  width: 70%;
-  height: 70%;
+  width: 50%;
+  height: 50%;
 }
 .border {
   width: 50%;
-  height: 700px;
+  height: 400px;
   display: flex;
   justify-content: flex-end;
 }
@@ -223,8 +237,9 @@ body {
 }
 
 .section2 {
-  height: 100vh;
+  height: fit-content;
   width: 100%;
+  max-height: 400px;
   display: flex;
 
   &__descriptions {
@@ -260,21 +275,44 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
+  height: 300px;
   color: #26337f;
   gap: 12px;
-  transform: translate3d(0px, -159.091px, 0px);
+  transform: translate3d(0px, -559.091px, 0px);
   &__header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     > span {
-      font-size: 38px;
+      font-size: 4rem;
       font-weight: 400;
+      line-height: 4rem;
       padding: 0;
     }
+  }
+  & > h2 {
+    width: 40%;
+    text-align: center;
+    font-size: 16px;
+  }
+}
+.section4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  color: #26337f;
+  gap: 12px;
+  // transform: translate3d(0px, -159.091px, 0px);
+  & > h1 {
+    font-size: 38px;
+    font-weight: 400;
+    padding: 0;
   }
   & > h2 {
     width: 40%;
