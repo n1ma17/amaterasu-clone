@@ -41,8 +41,17 @@
       </h2>
     </section>
     <section ref="section4" class="section4" data-bgcolor="#eacbd1" data-textcolor="#536fae">
-      <h1 ref="sec4Title">MEET ALEPH</h1>
-      <h2 ref="sec4Text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+      <div ref="oval3" class="oval-front">
+        How do you balance your personal ambitions with maintaining relationships?
+      </div>
+      <div class="background-ovals">
+        <div ref="oval1" class="oval1 oval-bg">
+          How do you balance your personal ambitions with maintaining relationships?
+        </div>
+        <div ref="oval2" class="oval2 oval-bg">
+          How do you balance your personal ambitions with maintaining relationships?
+        </div>
+      </div>
     </section>
     <div ref="backgroundRef" class="background"></div>
   </div>
@@ -58,6 +67,10 @@ const logoRef = ref(null)
 const backgroundRef = ref(null)
 let vantaEffect = null
 gsap.registerPlugin(ScrollTrigger)
+
+const oval1 = ref(null)
+const oval2 = ref(null)
+const oval3 = ref(null)
 
 onMounted(async () => {
   const VANTA = (await import('vanta/src/vanta.fog')).default
@@ -140,8 +153,43 @@ onMounted(async () => {
         scrub: true,
         toggleActions: 'restart pause resume reverse',
       },
-    }
+    },
   )
+  const ovals = [oval1.value, oval2.value]
+  window.addEventListener('mousemove', (event) => {
+    const { clientX: x, clientY: y } = event
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+
+    ovals.forEach((oval, index) => {
+      const intensity = index === 2 ? 1.5 : 1 // بیضی جلوتر سریع‌تر حرکت کنه
+      const moveX = (x - centerX) / 30 * intensity
+      const moveY = (y - centerY) / 30 * intensity
+      gsap.to(oval, {
+        x: moveX,
+        y: moveY,
+
+        duration: 0.4,
+        ease: 'power2.out'
+      })
+    })
+  })
+  window.addEventListener('mousemove', (event) => {
+    const { clientX: x, clientY: y } = event
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+
+    const intensity = 1
+    const moveX = -(x - centerX) / 100 * intensity
+    const moveY = -(y - centerY) / 100 * intensity
+    gsap.to(oval3.value, {
+        x: moveX,
+        y: moveY,
+
+        duration: 0.4,
+        ease: 'power2.out'
+      })
+  })
 
   logoRef.value.addEventListener('mousemove', (event) => {
     const { width, height, left, top } = logoRef.value.getBoundingClientRect()
@@ -299,25 +347,78 @@ body {
     font-size: 16px;
   }
 }
+
 .section4 {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100vh;
-  color: #26337f;
-  gap: 12px;
-  // transform: translate3d(0px, -159.091px, 0px);
-  & > h1 {
-    font-size: 38px;
-    font-weight: 400;
-    padding: 0;
-  }
-  & > h2 {
-    width: 40%;
-    text-align: center;
-    font-size: 16px;
-  }
+  overflow: hidden;
 }
+
+.background-ovals {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  right: 0;
+  left: 0;
+  margin: auto;
+  filter: blur(3px);
+
+}
+.oval2 {
+  position: absolute;
+  width: 320px; /* اندازه بیضی */
+  height: 120px;
+  right: 10%;
+  top: 50%;
+  border-radius: 100px;
+  border: 1px solid rgba(63, 63, 63, 0.986);
+  transition: transform 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.oval1 {
+  position: absolute;
+  width: 300px; /* اندازه بیضی */
+  height: 100px;
+  right: 40%;
+  top: 25%;
+  border-radius: 100px;
+  border: 1px solid rgba(134, 134, 134, 0.801);
+  transition: transform 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
+.oval-bg {
+  opacity: 0.3; /* محو کردن بیضی‌های پس‌زمینه */
+}
+
+.oval-front {
+  position: absolute;
+  right: 50%;
+  border-radius: 100px;
+  border: 1px solid rgba(173, 173, 173, 0.664);
+  transition: transform 0.2s ease-out;
+  opacity: 1;
+  color: rgba(38, 51, 127, 1);
+  font-size: 16px;
+  width: 400px; /* اندازه بیضی */
+  height: 150px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
 </style>
